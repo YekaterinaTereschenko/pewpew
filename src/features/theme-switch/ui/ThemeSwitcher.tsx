@@ -1,4 +1,4 @@
-import { useTheme } from "../../../entities/product/hooks/useTheme";
+import { useTheme } from "../../../shared/hooks/useTheme";
 
 const ThemeButton = () => {
   const { theme, toggleTheme } = useTheme();
