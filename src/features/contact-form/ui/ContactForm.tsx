@@ -1,7 +1,7 @@
 import type { IForm } from "../model/types";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
-import Input from "../../../shared/ui/Input";
+import Input from "@/shared/ui/Input";
 
 export default function ContactForm() {
     const { register, handleSubmit, formState: { errors } } = useForm<IForm>();
@@ -20,7 +20,7 @@ export default function ContactForm() {
                 required: "Enter name",
                 minLength: {
                     value: 2,
-                    message: "Surname must be at least 2 characters",
+                    message: "Name must be at least 2 characters",
                 }
             }} />
 

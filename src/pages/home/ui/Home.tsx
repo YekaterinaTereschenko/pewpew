@@ -1,11 +1,11 @@
 import { useState, useMemo } from "react";
-import { useProducts } from "../../../entities/product/hooks/useProducts";
-import ProductsList from "../../../widgets/products-list/ui/ProductsList";
-import Loader from "../../../shared/ui/Loader";
-import Error from "../../../shared/ui/Error";
-import Search from "../../../features/search/ui/Search";
-import Sort from "../../../features/sort/ui/Sort";
-import type { SortValue } from "../../../features/sort/model/sort-type";
+import { useProducts } from "@/entities/product/hooks/useProducts";
+import ProductsList from "@/widgets/products-list/ui/ProductsList";
+import Loader from "@/shared/ui/Loader";
+import Error from "@/shared/ui/Error";
+import Search from "@/features/search/ui/Search";
+import Sort from "@/features/sort/ui/Sort";
+import type { SortValue } from "@/features/sort/model/sort-type";
 
 export default function Home() {
   const { data, isPending, isError } = useProducts();
@@ -14,15 +14,15 @@ export default function Home() {
   const [sort, setSort] = useState<SortValue>("default");
 
   const processedProducts = useMemo(() => {
-    return (data ?? [])
-      .filter((product) =>
-        product.title.toLowerCase().includes(search.toLowerCase())
+    return (data?.rows ?? [])
+      .filter((product: any) =>
+        product.name.toLowerCase().includes(search.toLowerCase())
       )
       .slice()
       .sort((a, b) => {
         switch (sort) {
           case "name":
-            return a.title.localeCompare(b.title);
+            return a.name.localeCompare(b.name);
 
           case "lowerPrice":
             return a.price - b.price;

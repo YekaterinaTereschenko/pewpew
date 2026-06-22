@@ -1,6 +1,6 @@
-import ContactForm from '../../../features/contact-form/ui/ContactForm';
-import { usePageLoading } from '../../../shared/hooks/usePageLoading';
-import Loader from '../../../shared/ui/Loader';
+import ContactForm from '@/features/contact-form/ui/ContactForm';
+import { usePageLoading } from '@/shared/hooks/usePageLoading';
+import Loader from '@/shared/ui/Loader';
 
 export default function About() {
   const { isPending } = usePageLoading()
