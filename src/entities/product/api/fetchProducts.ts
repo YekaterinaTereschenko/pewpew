@@ -1,6 +1,11 @@
 import type { IProduct } from '../model/types'
 
-export async function fetchProducts(): Promise<IProduct[]> {
+interface IProductsResponse {
+    count: number
+    rows: IProduct[]
+}
+
+export async function fetchProducts(): Promise<IProductsResponse> {
     const res = await fetch('http://localhost:5000/api/device')
 
     if (!res.ok) {

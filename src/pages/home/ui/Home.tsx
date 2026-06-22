@@ -6,6 +6,7 @@ import Error from "@/shared/ui/Error";
 import Search from "@/features/search/ui/Search";
 import Sort from "@/features/sort/ui/Sort";
 import type { SortValue } from "@/features/sort/model/sort-type";
+import { productSortHandler } from "@/shared/hooks/UseProductSort";
 
 export default function Home() {
   const { data, isPending, isError } = useProducts();
@@ -15,26 +16,10 @@ export default function Home() {
 
   const processedProducts = useMemo(() => {
     return (data?.rows ?? [])
-      .filter((product: any) =>
-        product.name.toLowerCase().includes(search.toLowerCase())
-      )
+      .filter((product) => product.name.toLowerCase().includes(search.toLowerCase()))
       .slice()
-      .sort((a, b) => {
-        switch (sort) {
-          case "name":
-            return a.name.localeCompare(b.name);
-
-          case "lowerPrice":
-            return a.price - b.price;
-
-          case "higherPrice":
-            return b.price - a.price;
-
-          default:
-            return 0;
-        }
-      });
-  }, [data, search, sort]);
+      .sort(productSortHandler(sort))
+  }, [data, search, sort])
 
   if (isPending) return <Loader />;
   if (isError) return <Error />;

@@ -1,12 +1,6 @@
 import ContactForm from '@/features/contact-form/ui/ContactForm';
-import { usePageLoading } from '@/shared/hooks/usePageLoading';
-import Loader from '@/shared/ui/Loader';
 
 export default function About() {
-  const { isPending } = usePageLoading()
-
-  if (isPending) return <Loader />
-
   return (
     <div className='min-h-screen w-full py-5 text-center flex flex-col gap-5 items-center m-auto bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100'>
       <h3>Contact Us</h3>
