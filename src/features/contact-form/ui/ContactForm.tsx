@@ -1,7 +1,7 @@
 import type { IForm } from "../model/types";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
-import Input from "./Input";
+import Input from "../../../shared/ui/Input";
 
 export default function ContactForm() {
     const { register, handleSubmit, formState: { errors } } = useForm<IForm>();
@@ -9,6 +9,7 @@ export default function ContactForm() {
     const onSubmit: SubmitHandler<IForm> = (data) => {
         console.log(data);
     };
+    
 
     return (
         <form
@@ -16,14 +17,20 @@ export default function ContactForm() {
             className="flex flex-col gap-4 w-80 mx-auto mt-10"
         >
             <Input name="name" register={register} errors={errors} rules={{
-                    required: "Enter name",
-                    minLength: 2
-                }}/>
+                required: "Enter name",
+                minLength: {
+                    value: 2,
+                    message: "Surname must be at least 2 characters",
+                }
+            }} />
 
             <Input name="surname" register={register} errors={errors} rules={{
-                    required: "Enter surname",
-                    minLength: 2
-                }}/>
+                required: "Enter surname",
+                minLength: {
+                    value: 2,
+                    message: "Surname must be at least 2 characters",
+                }
+            }} />
 
             <Input
                 name="phone"

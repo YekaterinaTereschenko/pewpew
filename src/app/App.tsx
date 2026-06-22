@@ -3,25 +3,23 @@ import { Routes, Route } from 'react-router-dom'
 import Home from '../pages/home/ui/Home'
 import About from '../pages/about/ui/About'
 import Header from '../widgets/header/ui/Header'
-
-// больших надежд стоить не нужно, я так, заранее :) но большую часть я написала руками хотя бы
-//　　　　　／ ＞　  フ
-//　　　　　| 　_　 _|
-//　 　　　／`ミ _x 彡
-//　　 　 /　　　 　 |
-//　　　 /　 ヽ　　 ﾉ
-//　／￣|　　 |　|　|
-//　| (￣ヽ＿_ヽ_)_)
-//　＼二つ
+import User from '../pages/user/ui/User'
+import Cart from '../pages/cart/ui/Cart'
+import CartBtn from '../widgets/cartBtn/ui/CartBtn'
+import Sign from '../pages/sign/ui/Sign'
 
 function App() {
   return (
     <>
-    <Header />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/sign" element={<Sign />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
+      <CartBtn />
     </>
   )
 }
