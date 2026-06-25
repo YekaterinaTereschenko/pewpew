@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { fetchGetBasket } from '@/entities/basket/api/fetchGetBasket'
 import { fetchDeleteFromBasket } from '@/entities/basket/api/fetchDeleteFromBasket'
+const API_URL = import.meta.env.VITE_API_URL
 
 export default function Cart() {
   const navigate = useNavigate()
@@ -40,7 +41,7 @@ export default function Cart() {
       {data.basket_devices.map((item: any) => (
         <div key={item.id} className="flex items-center gap-4 p-4 mb-3 border border-gray-200 dark:border-gray-800 rounded-xl">
           <img
-            src={`http://localhost:5000/${item.device.img}`}
+            src={API_URL + item.device.img}
             alt={item.device.name}
             className="w-16 h-16 object-cover rounded-lg"
           />

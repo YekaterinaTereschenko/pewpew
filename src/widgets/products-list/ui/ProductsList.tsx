@@ -3,8 +3,9 @@ import type { IProduct } from '@/entities/product/model/types'
 import { ModalContext } from '@/features/modal/ui/ModalState'
 import { useContext, useState } from 'react'
 import Modal from '@/shared/ui/Modal'
-import YellowButton from '@/shared/ui/YellowButton'
+import PrimaryButton from '@/shared/ui/PrimaryButton'
 import { fetchAddToCard } from '@/entities/basket/api/ferchaAddToCard'
+const API_URL = import.meta.env.VITE_API_URL
 
 interface ProductsProps {
   products: IProduct[]
@@ -23,7 +24,7 @@ export default function ProductsList({ products }: ProductsProps) {
       {modal && selectedProduct && (
         <Modal title="About product" onClose={close}>
           <div className='flex flex-col items-center'>
-            <img src={"http://localhost:5000/" + selectedProduct.img} className="w-25 mx-auto md:mx-0" />
+            <img src={API_URL + selectedProduct.img} className="w-25 mx-auto md:mx-0" />
             <h3 className='text-xl'>{selectedProduct.name}</h3>
             {/* <p>{selectedProduct.description}</p> */}
             <div className="flex items-center gap-3 my-4">
@@ -41,10 +42,10 @@ export default function ProductsList({ products }: ProductsProps) {
                 +
               </button>
             </div>
-            <YellowButton onClick={() => {
+            <PrimaryButton onClick={() => {
               fetchAddToCard({ deviceId: selectedProduct.id, quantity: quantity})
               close()
-            }}>Add to cart</YellowButton>
+            }}>Add to cart</PrimaryButton>
           </div>
         </Modal>
       )}

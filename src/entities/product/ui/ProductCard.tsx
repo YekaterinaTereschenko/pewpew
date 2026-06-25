@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import type { IProduct } from '../model/types'
 import { ModalContext } from '../../../features/modal/ui/ModalState'
+const API_URL = import.meta.env.VITE_API_URL
 
 interface ProductProps {
   product: IProduct
@@ -16,7 +17,7 @@ export default function ProductCard({ product }: ProductProps) {
         className="flex flex-col md:flex-row items-center gap-15 rounded-2xl border border-gray-100/70 dark:border-gray-700/70 shadow-sm mx-10 mb-5 px-5 md:px-20 py-10 cursor-pointer bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
       >
         <img
-          src={"http://localhost:5000/" + product.img}
+          src={API_URL + product.img}
           alt={product.name}
           className="w-25"
         />

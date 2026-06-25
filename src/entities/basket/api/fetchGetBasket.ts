@@ -1,14 +1,6 @@
-export async function fetchGetBasket() {
-    const res = await fetch("http://localhost:5000/api/basket", {
-        method: 'GET',
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-    })
+import { get } from '@/shared/api/request'
+import type { IBasket } from '../model/types'
 
-    if (!res.ok) {
-        throw new Error(`${res.status}`) // просто бросаем ошибку
-    }
-    
-    return res.json()
+export async function fetchGetBasket(): Promise<IBasket> {
+    return await get<IBasket>('/api/basket', localStorage.getItem('token') ?? undefined)
 }

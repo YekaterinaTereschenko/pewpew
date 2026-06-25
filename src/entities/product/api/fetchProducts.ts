@@ -1,3 +1,4 @@
+import { get } from '@/shared/api/request'
 import type { IProduct } from '../model/types'
 
 interface IProductsResponse {
@@ -6,11 +7,5 @@ interface IProductsResponse {
 }
 
 export async function fetchProducts(): Promise<IProductsResponse> {
-    const res = await fetch('http://localhost:5000/api/device')
-
-    if (!res.ok) {
-        throw new Error(`Продукт не найден (status ${res.status})`)
-    }
-
-    return res.json()
+    return await get<IProductsResponse>('api/device')
 }
