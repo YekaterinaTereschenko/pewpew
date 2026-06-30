@@ -1,11 +1,11 @@
+import { get } from '@/shared/api/request'
 import type { IProduct } from '../model/types'
 
-export async function fetchProducts(): Promise<IProduct[]> {
-    const res = await fetch('https://fakestoreapi.com/products')
+interface IProductsResponse {
+    count: number
+    rows: IProduct[]
+}
 
-    if (!res.ok) {
-        throw new Error(`Продукт не найден (status ${res.status})`)
-    }
-
-    return res.json()
+export async function fetchProducts(): Promise<IProductsResponse> {
+    return await get<IProductsResponse>('api/device')
 }

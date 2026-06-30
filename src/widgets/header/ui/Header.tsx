@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import ThemeButton from '../../../features/theme-switch/ui/ThemeSwitcher'
+import ThemeButton from '@/features/theme-switch/ui/ThemeSwitcher'
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false)
@@ -13,10 +13,9 @@ export default function Header() {
 
             {/* Десктопное меню */}
             <div className="hidden md:flex items-center gap-10">
-                <ThemeButton />
-                <Link to='/'>Home</Link>
                 <Link to='/about'>About</Link>
-                <Link to='/sign' className='p-1.5 bg-[#CBF6FF] rounded-2xl'>
+                <ThemeButton />
+                <Link to='/user' className='p-1.5 bg-[#CBF6FF] rounded-2xl'>
                     <img src="user.png" alt="" className='max-w-8' />
                 </Link>
             </div>
